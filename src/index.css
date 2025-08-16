@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Lingkawi-South";
+  src: url("/fonts/Lingkawi-South.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-lingkawi: "Lingkawi-South", ui-sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-montserrat: "Montserrat", ui-sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-bricolage: "Bricolage Grotesque", ui-sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 :root {
   line-height: 1.5;
   font-weight: 400;

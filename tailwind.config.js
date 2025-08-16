@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         bricolage: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
         montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        lingkawi: ['Lingkawi-South', 'ui-sans-serif', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
       },
     },
   },

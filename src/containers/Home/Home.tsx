@@ -1,10 +1,10 @@
 import BlockContainer from "../../components/BlockContainer/BlockContainer";
+import { MacbookScroll } from "../../components/Macbook/MacbookScroll";
 
 const Home = () => {
   return (
     <BlockContainer>
-      <h1 className="text-4xl font-bold">Título con Bricolage</h1>
-      <p className="font-light">Texto ligero</p>
+      <MacbookScroll />
     </BlockContainer>
   );
 };
