@@ -24,16 +24,9 @@ import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
 import Button from "../Button/Button";
+import Screen from "../../containers/Screen/Screen";
 
-export const MacbookScroll = ({
-  showGradient,
-  title,
-  badge,
-}: {
-  showGradient?: boolean;
-  title?: string | React.ReactNode;
-  badge?: React.ReactNode;
-}) => {
+export const MacbookScroll = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -51,37 +44,42 @@ export const MacbookScroll = ({
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5]
+    [1.2, isMobile ? 1 : 1.5],
+    { clamp: true }
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5]
+    [0.6, isMobile ? 1 : 1.5],
+    { clamp: true }
   );
-  const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
-  const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
-  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const imgWidth = useTransform(scrollYProgress, [0, 1], ["27rem", "80vw"]);
+  const translate = useTransform(scrollYProgress, [0, 0.3], [0, 700], { clamp: true });
+  const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0], { clamp: true });
+  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100], { clamp: true });
+  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0], { clamp: true });
+  const imgWidth = useTransform(scrollYProgress, [0, 1], ["27rem", "80vw"], { clamp: true });
 
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
+      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80 overflow-hidden"
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="mb-20 text-center text-2xl text-white relative flex justify-center"
+        className="mb-20 text-center text-white relative flex justify-center"
       >
-        {title || (
-          <div className="flex flex-col items-center space-y-12">
-            <h1 className="font-bold z-0">Lucas Gonzalez</h1>
-            <h2 className="font-lingkawi text-blue-400 text-6xl absolute top-18 text-shadow-lg text-shadow-black z-50">Full Stack Developer</h2>
+        <div className="flex flex-col items-center space-y-12">
+          <div className="flex flex-col items-center space-y-6">
+            <h1 className="font-bold z-0 text-6xl">Lucas Gonzalez</h1>
+            <h2 className="font-lingkawi text-indigo-500 text-5xl absolute top-13 text-shadow-lg text-shadow-black z-50">
+              Full Stack Developer
+            </h2>
           </div>
-        )}
+          <Button onClick={() => {}}>Descargar CV</Button>
+        </div>
       </motion.h2>
       {/* Lid */}
       <Lid
@@ -110,10 +108,6 @@ export const MacbookScroll = ({
         </div>
         <Trackpad />
         <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
-        {showGradient && (
-          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
-        )}
-        {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
       </div>
     </div>
   );
@@ -162,9 +156,9 @@ export const Lid = ({
           x: "-50%",
           width: imgWidth,
         }}
-        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-black p-2 flex justify-center items-center"
+        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-black p-4 flex justify-center items-center overflow-hidden min-h-0"
       >
-        Hola
+        <Screen />
       </motion.div>
     </div>
   );
