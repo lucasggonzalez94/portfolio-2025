@@ -4,7 +4,7 @@ import { yearsSince } from "../../lib/utils";
 const About = () => {
   const years = yearsSince(new Date(2021, 3, 1));
   return (
-    <Window title="About">
+    <Window title="About" text>
       <p>
         Soy Desarrollador Full Stack con más de {years} años de experiencia
         creando soluciones escalables y mantenibles con tecnologías como
